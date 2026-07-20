@@ -1,0 +1,1 @@
+# Hofstadter-Q-sequence
