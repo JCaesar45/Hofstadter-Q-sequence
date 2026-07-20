@@ -1,0 +1,85 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q-Matrix | Hofstadter Sequence Visualizer</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="ambient-bg"></div>
+
+  <header class="glass-panel header-panel">
+    <div class="logo-mark">
+      <span class="q-glyph">Q</span>
+      <span class="logo-text">HOFSTADTER<span class="accent">.Q</span></span>
+    </div>
+    <nav class="nav-links">
+      <a href="#visualizer">Phase Space</a>
+      <a href="#terminal">Terminal</a>
+      <a href="#about">Manifesto</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="visualizer" class="glass-panel visualizer-panel">
+      <div class="panel-header">
+        <h2>Phase Space Attractor</h2>
+        <p>Mapping Q(n) against Q(n-1). The self-reference made visible.</p>
+      </div>
+      <div class="canvas-wrapper">
+        <canvas id="phaseCanvas"></canvas>
+        <div class="canvas-overlay">
+          <span id="coordReadout" class="mono">x: 0 | y: 0</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="terminal" class="glass-panel control-panel">
+      <div class="panel-header">
+        <h2>Sequence Engine</h2>
+        <p>Inject parameters. Observe the recursion.</p>
+      </div>
+      <div class="controls-grid">
+        <div class="input-group">
+          <label for="nInput">Target Depth (n)</label>
+          <input type="number" id="nInput" value="2500" min="3" max="100000">
+        </div>
+        <div class="input-group">
+          <label for="speedSlider">Render Velocity</label>
+          <input type="range" id="speedSlider" min="1" max="100" value="50">
+        </div>
+        <button id="computeBtn" class="primary-btn">
+          <span class="btn-text">Initialize Computation</span>
+          <span class="btn-loader"></span>
+        </button>
+      </div>
+      <div class="telemetry">
+        <div class="metric">
+          <span class="metric-label">Q(n)</span>
+          <span id="qnValue" class="metric-value mono">--</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Iterations</span>
+          <span id="iterValue" class="metric-value mono">--</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Delta (ms)</span>
+          <span id="deltaValue" class="metric-value mono">--</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="glass-panel footer-panel">
+    <p>Engineered for the curious. <span class="accent">Q(n) = Q(n−Q(n−1)) + Q(n−Q(n−2))</span></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
